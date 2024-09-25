@@ -1,0 +1,35 @@
+from flask import Flask, jsonify
+#import collections                                         
+#collections_abc = getattr(collections, 'abc', collections)
+import json
+#import requests
+#from pyrebase import pyrebase
+
+
+
+ewordable = Flask(__name__)
+
+@ewordable.route('/', methods=['GET'])
+def hello():
+    return jsonify({"hello":"world"})
+
+@ewordable.route('/check_word', methods=['GET'])
+def ewordable_check_word():
+
+    word_id = "kind"
+    url = 'https://api.dictionaryapi.dev/api/v2/entries/en/'+word_id.lower();
+    print("url", url)
+    #r = requests.get(url)
+    #print("r",r)
+    #print("code {}\n".format(r.status_code))
+    #print("text \n" + r.text)
+    #print("json dumps \n" + json.dumps(r.json()))
+    return({"check":"word"})
+    
+   
+    #return({"check":"word"})
+
+
+if __name__ == "__main__":
+
+    ewordable.run(host='0.0.0.0', port=5000)
